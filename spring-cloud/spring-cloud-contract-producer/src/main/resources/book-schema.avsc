@@ -1,0 +1,19 @@
+{
+	"type": "record",
+	"name": "Book",
+	"namespace": "com.rkaaya.schema",
+	"fields": [
+	{
+		"name": "id",
+		"type": "int"
+	},
+	{
+		"name": "name",
+		"type": "string"
+	},
+	{
+		"name": "page",
+		"type": "int"
+	}
+	]
+}
