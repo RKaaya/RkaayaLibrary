@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @DirtiesContext
 @AutoConfigureMessageVerifier
-public abstract class BaseBookTest {
+public abstract class BookCRUDBase {
 
     @Autowired
     private BookController bookController;

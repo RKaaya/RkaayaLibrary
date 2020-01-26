@@ -14,8 +14,7 @@
 
     <properties>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
-        <kafka-avro-serializer.version>4.0.0</kafka-avro-serializer.version>
-        <avro.version>1.8.2</avro.version>
+        <spring-kafka.version>2.4.1.RELEASE</spring-kafka.version>
     </properties>
 
     <dependencies>
@@ -28,6 +27,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
         </dependency>
 
         <dependency>
@@ -44,6 +49,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <version>${spring-kafka.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -90,9 +102,8 @@
                 <version>2.1.1.RELEASE</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <baseClassForTests>
-                        com.rkaaya.spring.cloud.springcloudcontractproducer.contracts.BaseBookTest
-                    </baseClassForTests>
+                    <contractsDirectory>src/test/resources/contracts</contractsDirectory>
+                    <packageWithBaseClasses>com.rkaaya.spring.cloud.springcloudcontractproducer.contracts</packageWithBaseClasses>
                 </configuration>
             </plugin>
         </plugins>
