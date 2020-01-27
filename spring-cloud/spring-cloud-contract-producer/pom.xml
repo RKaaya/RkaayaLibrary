@@ -101,12 +101,60 @@
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
                 <version>2.1.1.RELEASE</version>
                 <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>convert</goal>
+                            <goal>generateStubs</goal>
+                            <goal>generateTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <contractsDirectory>src/test/resources/contracts</contractsDirectory>
                     <packageWithBaseClasses>com.rkaaya.spring.cloud.springcloudcontractproducer.contracts</packageWithBaseClasses>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.cloud</groupId>
+                        <artifactId>spring-cloud-contract-pact</artifactId>
+                        <version>2.1.1.RELEASE</version>
+                    </dependency>
+                        <dependency>
+                            <groupId>org.springframework.cloud</groupId>
+                            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+                            <version>2.1.1.RELEASE</version>
+                            <scope>compile</scope>
+                        </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-test-sources/contracts/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>springcloudcontract-snapshots</name>
+            <url>https://springcloudcontract.jfrog.io/springcloudcontract/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
