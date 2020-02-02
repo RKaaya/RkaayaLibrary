@@ -14,7 +14,7 @@ Contract.make {
         }
         response {
             status OK()
-            body(file("responseAll.json"))
+            body(file("2_response.json"))
             headers {
                 contentType(applicationJson())
             }
