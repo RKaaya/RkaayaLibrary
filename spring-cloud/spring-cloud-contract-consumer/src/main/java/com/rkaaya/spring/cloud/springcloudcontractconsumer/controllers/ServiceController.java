@@ -1,5 +1,6 @@
 package com.rkaaya.spring.cloud.springcloudcontractconsumer.controllers;
 
+import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("toyBook")
 public class ServiceController {
+
+    private static String URL = "http://localhost:8090";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -19,7 +22,7 @@ public class ServiceController {
         httpHeaders.add("Content-Type", "application/json");
 
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-                "http://localhost:8090/book/",
+                URL + "/book/",
                 HttpMethod.GET,
                 new HttpEntity<>(httpHeaders),
                 String.class);
@@ -32,10 +35,16 @@ public class ServiceController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Type", "application/json");
 
+        JsonObject responseObject = new JsonObject();
+//        responseObject.addProperty("id", id);
+        responseObject.addProperty("id", id);
+        responseObject.addProperty("name", name);
+        responseObject.addProperty("page", page);
+
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-                "http://localhost:8090/book/",
+                URL + "/book/",
                 HttpMethod.POST,
-                new HttpEntity<>("{'id':15,'name':'Lord','page':9}", httpHeaders),
+                new HttpEntity<>(responseObject.toString(), httpHeaders),
                 String.class);
 
         return responseEntity.getBody();
@@ -47,7 +56,7 @@ public class ServiceController {
         httpHeaders.add("Content-Type", "application/json");
 
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-                "http://localhost:8090/book/id?id=" + id,
+                URL + "/book/id?id=" + id,
                 HttpMethod.GET,
                 new HttpEntity<>(httpHeaders),
                 String.class);

@@ -3,6 +3,7 @@ package com.rkaaya.spring.cloud.springcloudcontractconsumer.controller;
 import com.rkaaya.spring.cloud.springcloudcontractconsumer.SpringCloudContractConsumerApplication;
 import org.assertj.core.api.BDDAssertions;
 import org.awaitility.Awaitility;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class KafkaControllerTest {
     SpringCloudContractConsumerApplication application;
 
     @Test
+    @Ignore
     public void contextLoads() {
         this.trigger.trigger("trigger");
 

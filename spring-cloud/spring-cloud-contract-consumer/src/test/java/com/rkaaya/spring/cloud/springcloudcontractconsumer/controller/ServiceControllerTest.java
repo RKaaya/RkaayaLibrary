@@ -1,5 +1,6 @@
 package com.rkaaya.spring.cloud.springcloudcontractconsumer.controller;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,9 @@ public class ServiceControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @Ignore
     public void contract_test_book_crud() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/toyBook/createBook?id=15&name=Lord&page=9")
+        mockMvc.perform(MockMvcRequestBuilders.post("/toyBook/createBook?id=15&name=TestBook&page=9")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
@@ -39,6 +41,13 @@ public class ServiceControllerTest {
                 .andExpect(status().isOk());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/toyBook/book?id=15")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void contract_test_create_book() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/toyBook/createBook?id=19&name=Book&page=13")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
