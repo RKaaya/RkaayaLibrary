@@ -8,3 +8,17 @@ spring:
     producer:
       key-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
       value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+
+      h2:
+        console:
+          enabled: true
+      datasource:
+        url: jdbc:h2:mem:test
+        username: sa
+        password:
+        driverClassName: org.h2.Driver
+
+      jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+          ddl-auto: create

@@ -9,6 +9,9 @@ import org.springframework.cloud.contract.verifier.messaging.boot.AutoConfigureM
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Random;
+import java.util.UUID;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @AutoConfigureMessageVerifier
@@ -18,11 +21,15 @@ public abstract class BookKafkaBase {
     @Autowired
     BookKafkaController bookKafkaController;
 
-    public void trigger() {
+    public void sendBookWithKafka() {
+
+        Random r = new Random();
+
         Book book = new Book();
-        book.setId(13L);
-        book.setName("Kirby");
-        book.setPage(9);
+        book.setId(r.nextLong());
+        book.setName(UUID.randomUUID().toString());
+        book.setPage(r.nextInt());
+
         this.bookKafkaController.sendBook(book);
     }
 

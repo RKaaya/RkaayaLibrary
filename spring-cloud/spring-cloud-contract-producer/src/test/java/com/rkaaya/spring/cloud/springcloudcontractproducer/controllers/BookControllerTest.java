@@ -1,7 +1,7 @@
 package com.rkaaya.spring.cloud.springcloudcontractproducer.controllers;
 
 import com.rkaaya.spring.cloud.springcloudcontractproducer.model.Book;
-import com.rkaaya.spring.cloud.springcloudcontractproducer.services.BookService;
+import com.rkaaya.spring.cloud.springcloudcontractproducer.repositories.BookStorage;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.Random;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -18,7 +21,7 @@ import static org.mockito.Mockito.when;
 public class BookControllerTest {
 
     @MockBean
-    BookService bookService;
+    BookStorage bookStorage;
 
     @Autowired
     BookController bookController;
@@ -30,13 +33,16 @@ public class BookControllerTest {
 
     @Test
     public void getBookByIdTest(){
+        Random r = new Random();
+
         Book book = new Book();
-        book.setId(1L);
-        book.setName("Book name");
-        book.setPage(5);
+        Long id = r.nextLong();
+        book.setId(id);
+        book.setName(UUID.randomUUID().toString());
+        book.setPage(r.nextInt());
 
-        when(bookService.getBookById(1L)).thenReturn(book);
+        when(bookStorage.getBookById(id)).thenReturn(book);
 
-        assertThat(bookController.getBook(1L).equals(book));
+        assertThat(bookController.getBook(id).equals(book));
     }
 }

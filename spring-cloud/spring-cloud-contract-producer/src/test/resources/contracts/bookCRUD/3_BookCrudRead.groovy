@@ -17,7 +17,7 @@ Contract.make {
         }
         response {
             status OK()
-            body(file("3_response.json"))
+            body(file("BookCrudReadResponse.json"))
             headers {
                 contentType(applicationJson())
             }

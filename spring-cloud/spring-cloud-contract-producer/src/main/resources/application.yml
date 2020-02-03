@@ -4,4 +4,19 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       useNativeEncoding: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:db
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: H2
+    hibernate:
+      ddl-auto: create-drop
+
 logging.level.org.springframework.cloud.contract: debug

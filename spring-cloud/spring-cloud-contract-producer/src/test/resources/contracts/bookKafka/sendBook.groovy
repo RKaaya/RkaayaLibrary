@@ -5,14 +5,14 @@ import org.springframework.cloud.contract.spec.Contract
 Contract.make {
     label("trigger")
     input {
-        triggeredBy("trigger()")
+        triggeredBy("sendBookWithKafka()")
     }
     outputMessage {
         sentTo("toyBook")
         body([
-                id: 13,
-                name: "Kirby",
-                page: 9
+                id: $(producer(anyInteger())),
+                name: $(producer(anyUuid())),
+                page: $(producer(anyInteger()))
         ])
     }
 }

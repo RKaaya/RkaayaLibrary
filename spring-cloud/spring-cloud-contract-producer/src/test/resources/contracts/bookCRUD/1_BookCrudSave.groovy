@@ -10,7 +10,7 @@ Contract.make {
             contentType(applicationJson())
         }
         url("/book/")
-        body(file("1_request.json"))
+        body(file("BookCrudSave.json"))
     }
         response {
             status CREATED()
