@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
 import java.util.Random;
-import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -28,14 +27,11 @@ public abstract class BookCRUDWithDBBase {
     @Before
     public void setup() {
         Random r = new Random();
-        bookController.createBook(new Book(r.nextLong(), UUID.randomUUID().toString(), r.nextInt()));
-        bookController.createBook(new Book(r.nextLong(), UUID.randomUUID().toString(), r.nextInt()));
-        bookController.createBook(new Book(r.nextLong(), UUID.randomUUID().toString(), r.nextInt()));
+        bookController.createBook(new Book(r.nextLong(), "Test Book Name 1", r.nextInt()));
+        bookController.createBook(new Book(r.nextLong(), "Test Book Name 4", r.nextInt()));
+        bookController.createBook(new Book(r.nextLong(), "Test Book Name 9", r.nextInt()));
         StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(bookController);
         RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
     }
 
-    public String getRandomString() {
-        return UUID.randomUUID().toString();
-    }
 }

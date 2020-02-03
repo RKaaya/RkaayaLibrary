@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Random;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -38,7 +37,7 @@ public class BookControllerTest {
         Book book = new Book();
         Long id = r.nextLong();
         book.setId(id);
-        book.setName(UUID.randomUUID().toString());
+        book.setName("Random Book Name 456");
         book.setPage(r.nextInt());
 
         when(bookStorage.getBookById(id)).thenReturn(book);

@@ -11,7 +11,7 @@ Contract.make {
         sentTo("toyBook")
         body([
                 id: $(producer(anyInteger())),
-                name: $(producer(anyUuid())),
+                name: $(producer(anyNonEmptyString())),
                 page: $(producer(anyInteger()))
         ])
     }

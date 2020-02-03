@@ -10,7 +10,6 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Random;
-import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -27,7 +26,7 @@ public abstract class BookKafkaBase {
 
         Book book = new Book();
         book.setId(r.nextLong());
-        book.setName(UUID.randomUUID().toString());
+        book.setName("Random Book Name");
         book.setPage(r.nextInt());
 
         this.bookKafkaController.sendBook(book);

@@ -21,9 +21,6 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 @AutoConfigureMessageVerifier
 public abstract class BookCRUDBase {
 
-    @MockBean
-    private BookRepository bookRepository;
-
     @Autowired
     private BookController bookController;
 

@@ -16,17 +16,17 @@ Contract.make {
         body([
                 [
                         id: $(producer(anyInteger())),
-                        name: $(producer(anyUuid())),
+                        name: $(producer(anyNonEmptyString())),
                         page: $(producer(anyInteger()))
                 ],
                 [
                         id: $(producer(anyInteger())),
-                        name: $(producer(anyUuid())),
+                        name: $(producer(anyNonEmptyString())),
                         page: $(producer(anyInteger()))
                 ],
                 [
                         id: $(producer(anyInteger())),
-                        name: $(producer(anyUuid())),
+                        name: $(producer(anyNonEmptyString())),
                         page: $(producer(anyInteger()))
                 ]
         ])
