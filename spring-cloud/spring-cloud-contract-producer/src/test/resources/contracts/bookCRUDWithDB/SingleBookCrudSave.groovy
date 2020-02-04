@@ -11,9 +11,9 @@ Contract.make {
         }
         url("/bookdb/")
         body([
-                id: $(consumer(regex(anInteger())), producer(42)),
-                name: $(consumer(anyNonBlankString()), producer("TBook")),
-                page: $(consumer(optional(regex(anInteger()))), producer(13))
+                id: $(consumer(regex(positiveInt())), producer(42)),
+                name: $(consumer(regex(nonBlank())), producer("TBook")),
+                page: $(consumer(regex(positiveInt())), producer(13))
         ])
     }
         response {
@@ -22,7 +22,7 @@ Contract.make {
                 contentType(applicationJson())
             }
             body([
-                    id: $(producer(anyInteger())),
+                    id: $(producer(regex(positiveInt()))),
                     name: fromRequest().body('$.name'),
                     page: fromRequest().body('$.page')
             ])

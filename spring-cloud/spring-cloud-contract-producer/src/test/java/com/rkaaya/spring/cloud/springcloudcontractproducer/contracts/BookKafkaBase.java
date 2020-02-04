@@ -25,9 +25,9 @@ public abstract class BookKafkaBase {
         Random r = new Random();
 
         Book book = new Book();
-        book.setId(r.nextLong());
+        book.setId((long) r.nextInt(1000));
         book.setName("Random Book Name");
-        book.setPage(r.nextInt());
+        book.setPage(r.nextInt(1000));
 
         this.bookKafkaController.sendBook(book);
     }

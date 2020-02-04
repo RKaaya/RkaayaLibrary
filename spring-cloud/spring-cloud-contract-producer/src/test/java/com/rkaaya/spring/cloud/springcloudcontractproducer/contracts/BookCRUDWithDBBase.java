@@ -27,9 +27,9 @@ public abstract class BookCRUDWithDBBase {
     @Before
     public void setup() {
         Random r = new Random();
-        bookController.createBook(new Book(r.nextLong(), "Test Book Name 1", r.nextInt()));
-        bookController.createBook(new Book(r.nextLong(), "Test Book Name 4", r.nextInt()));
-        bookController.createBook(new Book(r.nextLong(), "Test Book Name 9", r.nextInt()));
+        bookController.createBook(new Book((long) r.nextInt(1000), "Test Book Name 1", r.nextInt(1000)));
+        bookController.createBook(new Book((long) r.nextInt(1000), "Test Book Name 4", r.nextInt(1000)));
+        bookController.createBook(new Book((long) r.nextInt(1000), "Test Book Name 9", r.nextInt(1000)));
         StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(bookController);
         RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
     }

@@ -10,9 +10,9 @@ Contract.make {
     outputMessage {
         sentTo("toyBook")
         body([
-                id: $(producer(anyInteger())),
-                name: $(producer(anyNonEmptyString())),
-                page: $(producer(anyInteger()))
+                id: $(producer(regex(positiveInt()))),
+                name: $(producer(regex(nonBlank()))),
+                page: $(producer(regex(positiveInt())))
         ])
     }
 }
