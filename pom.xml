@@ -6,6 +6,8 @@
     <modules>
         <module>spring-bean-life-cycle</module>
         <module>spring-cloud-contract</module>
+        <module>spring-cloud-stream</module>
+        <module>spring-cloud-microservices</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
