@@ -5,7 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-bean-life-cycle</module>
-        <module>spring-cloud</module>
+        <module>spring-cloud-contract</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
