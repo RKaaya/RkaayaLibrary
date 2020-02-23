@@ -1,6 +1,6 @@
 package com.rkaaya.library.java8.stream;
 
-import com.rkaaya.library.java8.Models.Hero;
+import com.rkaaya.library.java8.models.Hero;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;

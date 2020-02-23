@@ -1,4 +1,4 @@
-package com.rkaaya.library.java8.Models;
+package com.rkaaya.library.java8.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
