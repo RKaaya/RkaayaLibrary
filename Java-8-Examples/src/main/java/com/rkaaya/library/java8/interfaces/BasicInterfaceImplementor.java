@@ -3,7 +3,7 @@ package com.rkaaya.library.java8.interfaces;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class HeroHQ {
+public class BasicInterfaceImplementor {
 
     public static void main(String[] args) {
         Implementor implementor = new Implementor();
