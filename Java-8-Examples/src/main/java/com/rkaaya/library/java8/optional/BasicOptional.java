@@ -1,5 +1,7 @@
 package com.rkaaya.library.java8.optional;
 
+import com.rkaaya.library.java8.models.Hero;
+import com.rkaaya.library.java8.models.Team;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -32,6 +34,21 @@ public class BasicOptional {
         List<String> listOfNames = Optional.ofNullable(getANull()).orElseGet(() -> new ArrayList<>());
         log.info("List is present and counts {} item.", listOfNames.size());
 
+        //Get properties safely from Hero
+        Optional<Hero> heroWoop = Optional.ofNullable(getANullHero());
+        String woopTeamName = heroWoop
+                .flatMap(Hero::getTeam)
+                .flatMap(Team::getTeamName)
+                .orElse("team name is unknown");
+        log.info("Hero Woop's team name is: " + woopTeamName);
+
+        Optional<Hero> heroWoop2 = Optional.ofNullable(getAHero());
+        String woop2TeamName = heroWoop
+                .flatMap(Hero::getTeam)
+                .flatMap(Team::getTeamName)
+                .orElse("team name is unknown");
+        log.info("Hero Woop's team name is: " + woop2TeamName);
+
         //Make string upperCase or throw an exception
         String multyVille = null;
         Optional<String> valueOfMultyVille = Optional.ofNullable(multyVille);
@@ -52,5 +69,13 @@ public class BasicOptional {
 
     private static List<String> getANull() {
         return null;
+    }
+
+    private static Hero getANullHero() {
+        return null;
+    }
+
+    private static Hero getAHero() {
+        return new Hero("Woop");
     }
 }
